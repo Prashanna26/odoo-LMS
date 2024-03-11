@@ -1,0 +1,4 @@
+lms/__pycache__/
+lms/models/__pycache__/
+lms_account/__pycache__/
+lms_account/models/__pycache__/
