@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="lms_history_view_calendar" model="ir.ui.view">
+            <field name="name">lms.history.view.calendar</field>
+            <field name="model">lms.history</field>
+            <field name="arch" type="xml">
+                <calendar create="0" string="Borrow History" date_start="start_date" date_stop="end_date" color="person_name" mode="month" quick_add="False">
+                    <field name="name" />
+                    <field name="person_name" />
+                </calendar>
+            </field>
+        </record>
+
+        <record id="lms_history_view_tree" model="ir.ui.view">
+            <field name="name">lms.history.view.tree</field>
+            <field name="model">lms.history</field>
+            <field name="arch" type="xml">
+                <tree decoration-success="state=='0'"
+                    decoration-danger="state=='1'" create="0" >
+                    <field name="books_id" />
+                    <field name="member_id" invisible="1"/>
+                    <field name="person_name" />
+                    <field name="start_date" />
+                    <field name="end_date" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="lms_history_action" model="ir.actions.act_window">
+            <field name="name">History</field>
+            <field name="res_model">lms.history</field>
+            <field name="view_mode">calendar,tree</field>
+        </record>
+
+        <record id="lms_history_tree_action" model="ir.actions.act_window">
+            <field name="name">Borrow history</field>
+            <field name="res_model">lms.history</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem
+            id="lms_history_menu"
+            name="Borrow"
+            action="lms_history_action"
+            parent="lms.lms_menu"
+            sequence="5"/>
+
+    </data>
+</odoo>

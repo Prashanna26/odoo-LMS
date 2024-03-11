@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="lms_dashboard_a" model="lms.dashboard">
+        <field name="name">Total Books</field>
+        <field name="is_books_card">True</field>
+    </record>
+
+    <record id="lms_dashboard_b" model="lms.dashboard">
+        <field name="name">Total Sales</field>
+        <field name="is_sales_card">True</field>
+    </record>
+
+    <record id="lms_dashboard_c" model="lms.dashboard">
+        <field name="name">Total Borrow</field>
+        <field name="is_borrow_card">True</field>
+    </record>
+
+    <!-- <record id="lms_dashboard_d" model="lms.dashboard">
+        <field name="name">Total Amount</field>
+        <field name="is_amount_card">True</field>
+    </record> -->
+
+</odoo>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="lms_dashboard_view_kanban" model="ir.ui.view">
+            <field name="name">lms.dashboard.view.kanban</field>
+            <field name="model">lms.dashboard</field>
+            <field name="arch" type="xml">
+                <kanban create="0" delete="false">
+                    <field name="name" />
+                    <field name="is_books_card" />
+                    <field name="is_sales_card" />
+                    <field name="is_borrow_card" />
+                    <field name="books_total" />
+                    <field name="sold_total" />
+                    <field name="borrow_total" />
+                    <field name="color" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="#{kanban_color(record.color.raw_value)} o_has_icon oe_kanban_content oe_kanban_card text-center border-2 rounded-2">
+                                <div class="o_primary o_text_overflow fw-bold fs-4 mb-2">
+                                    <field name="name" />
+                                </div>
+                                <div class="fw-bold display-1">
+                                    <t t-if="record.is_books_card.raw_value === true">
+                                        <div>
+                                            <field name="books_total" />
+                                        </div>
+                                    </t>
+                                    <t t-if="record.is_sales_card.raw_value === true">
+                                        <div>
+                                            <field name="sold_total" />
+                                        </div>
+                                    </t>
+                                    <t t-if="record.is_borrow_card.raw_value === true">
+                                        <div>
+                                            <field name="borrow_total" />
+                                        </div>
+                                    </t>
+                                    <div class="o_kanban_card_manage_pane dropdown-menu" role="menu">
+                                        <div class="o_kanban_slides_card_manage_pane p-4">
+                                            <t t-if="widget.deletable">
+                                                <div role="menuitem">
+                                                    <a type="delete">Delete</a>
+                                                </div>
+                                            </t>
+                                            <div role="separator" class="dropdown-divider"/>
+                                        </div>
+                                        <div role="menuitem" aria-haspopup="true" class="o_no_padding_kanban_colorpicker">
+                                            <ul class="oe_kanban_colorpicker" data-field="color" role="popup"/>
+                                        </div>
+                                    </div>
+                                    <a class="o_kanban_manage_toggle_button o_dropdown_kanban" href="#" groups="base.group_user">
+                                        <i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"/>
+                                    </a>
+                                    <!-- <t t-if="record.is_amount_card.raw_value === true">
+                                        <div>
+                                            <field name="total_amount" />
+                                        </div>
+                                    </t> -->
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="lms_dashboard_action" model="ir.actions.act_window">
+            <field name="name">Dashboard</field>
+            <field name="res_model">lms.dashboard</field>
+            <field name="view_mode">kanban</field>
+        </record>
+
+        <menuitem
+            id="lms_menu"
+            name="LMS"
+        />
+
+        <menuitem
+            id="lms_dashboard_menu"
+            name="Dashboard"
+            action="lms_dashboard_action"
+            parent="lms.lms_menu"
+            sequence="0"
+        />
+
+        <menuitem
+            id="lms_invoice_menu"
+            name="Invoice"
+            parent="lms.lms_menu"
+            sequence="4"
+            action="account.action_move_out_invoice_type"
+        />
+
+    </data>
+</odoo>

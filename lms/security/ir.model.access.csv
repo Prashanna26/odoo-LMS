@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_lms_books,lms.books,model_lms_books,base.group_user,1,1,1,1
+access_lms_author,lms.author,model_lms_author,base.group_user,1,1,1,1
+access_lms_category,lms.category,model_lms_category,base.group_user,1,1,1,1
+access_lms_member,lms.member,model_lms_member,base.group_user,1,1,1,1
+access_lms_history,lms.history,model_lms_history,base.group_user,1,1,1,1
+access_lms_dashboard,lms.dashboard,model_lms_dashboard,base.group_user,1,1,1,1
+
+

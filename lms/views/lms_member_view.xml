@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="lms_member_view_tree" model="ir.ui.view">
+            <field name="name">lms.member.view.tree</field>
+            <field name="model">lms.member</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="name" />
+                    <field name="email" />
+                    <field name="phone" />
+                    <field name="dob" />
+                    <field name="address" />
+                    <field name="membership_type" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="lms_member_view_form" model="ir.ui.view">
+            <field name="name">lms.member.view.form</field>
+            <field name="model">lms.member</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="return_action_to_open_history"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-history"
+                                context="{'xml_id':'lms.lms_history_action'}">
+                                <field name="history_ids" string="History" widget="statinfo" />
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" nolabel="1" />
+                            </h1>
+                        </div>
+                        <field name="image" class="oe_avatar" widget="image"
+                            options="{'size': [144, 256]}" />
+
+                        <group col="2">
+                            <group>
+                                <field name="email" />
+                                <field name="dob" />
+                                <field name="address" />
+                                <field name="phone" />
+                            </group>
+                            <group>
+                                <field name="country" />
+                                <field name="city" />
+                                <field name="membership_type" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Borrow">
+                                <field name="books_ids">
+                                    <kanban>
+                                        <templates>
+                                            <t t-name="kanban-box">
+                                                <div class="oe_kanban_global_click">
+                                                    <div>
+                                                        <group>
+                                                            <field name="image" widget="image"
+                                                                class="oe_avatar" />
+                                                        </group>
+                                                    </div>
+                                                    <div style="margin-top: 0px">
+                                                        <b>
+                                                            <field name="name" />
+                                                        </b>
+                                                        <div>
+                                                            <field name="author_ids" />
+                                                        </div>
+                                                        <div>
+                                                            <field name="published_year" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </templates>
+                                    </kanban>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="lms_member_view_kanban" model="ir.ui.view">
+            <field name="name">lms.member.view.kanban</field>
+            <field name="model">lms.member</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_kanban_image">
+                                    <field name="image" widget="image" class="oe_avatar"
+                                        options="{'size': [65, 120], 'zoom': true, 'preview_image':'image'}" />
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <div class="o_kanban_record_headings">
+                                        <strong class="o_kanban_record_title">
+                                            <field name="name" />
+                                        </strong>
+                                    </div>
+                                    <div>
+                                        <field name="email" />
+                                    </div>
+                                    <div> Type:<field name="membership_type" />
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="lms_member_action" model="ir.actions.act_window">
+            <field name="name">Members</field>
+            <field name="res_model">lms.member</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <menuitem
+            id="lms_member_menu"
+            name="Members"
+            action="lms_member_action"
+            parent="lms.lms_menu"
+            sequence="3"
+        />
+    </data>
+</odoo>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="lms_author_view_kanban" model="ir.ui.view">
+            <field name="name">lms.author.view.kanban</field>
+            <field name="model">lms.author</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div style="margin-top: 0px">
+                                    <b>
+                                        <field name="name" />
+                                    </b>
+                                    <div>
+                                        <field name="email" />
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <record id="lms_author_view_form" model="ir.ui.view">
+            <field name="name">lms.author.view.form</field>
+            <field name="model">lms.author</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="email" />
+                            <field name="description" />
+                            <field name="sequence" invisible="true" />
+                        </group>
+
+                        <notebook>
+                            <page name="Books" string="Books">
+                                <field name="books_ids">
+                                    <kanban>
+                                        <templates>
+                                            <t t-name="kanban-box">
+                                                <div class="oe_kanban_global_click">
+                                                    <div>
+                                                        <group>
+                                                            <field name="image" widget="image"
+                                                                class="oe_avatar" />
+                                                        </group>
+                                                    </div>
+                                                    <div style="margin-top: 0px">
+                                                        <b>
+                                                            <field name="name" />
+                                                        </b>
+                                                        <div> Author: <field name="author_ids" />
+                                                        </div>
+                                                        <div> Edition: <field name="edition" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </templates>
+                                    </kanban>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="lms_author_view_tree" model="ir.ui.view">
+            <field name="name">lms.author.view.tree</field>
+            <field name="model">lms.author</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="sequence" widget="handle" />
+                    <field name="name" />
+                    <field name="email" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_lms_author" model="ir.actions.act_window">
+            <field name="name">Author</field>
+            <field name="res_model">lms.author</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <menuitem
+            id="lms_author_menu"
+            name="Author"
+            action="action_lms_author"
+            parent="lms.lms_menu"
+            sequence="2"
+        />
+    </data>
+
+</odoo>
