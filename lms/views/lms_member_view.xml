@@ -20,7 +20,13 @@
             <field name="name">lms.member.view.form</field>
             <field name="model">lms.member</field>
             <field name="arch" type="xml">
-                <form string="">
+                <form>
+                    <header>
+                        <field name="mem_cust"
+                            widget="statusbar"
+                            statusbar_visible="member,customer"
+                        />
+                    </header>
                     <sheet>
                         <div class="oe_button_box" name="button_box">
                             <button name="return_action_to_open_history"
@@ -50,6 +56,7 @@
                                 <field name="country" />
                                 <field name="city" />
                                 <field name="membership_type" />
+                                <field name="is_customer" attrs="{'readonly': [('is_customer', '=', True)]}" />
                             </group>
                         </group>
                         <notebook>

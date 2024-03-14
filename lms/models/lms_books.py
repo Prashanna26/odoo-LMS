@@ -22,7 +22,8 @@ class LmsBooks(models.Model):
                             ('bought','Bought')],
                             string='Status', default='available')
     price = fields.Integer(string='Price(Rs.)')
-    buyer_id = fields.Many2one('lms.member', string="Taker")
+    buyer_id = fields.Many2one('res.partner', string="Buyer")
+    member_id = fields.Many2one('lms.member', string="Member")
     seller_id = fields.Many2one('res.users', string="seller")
     days_borrow = fields.Integer(default=7, string="Days to Borrow")
     priority = fields.Selection([
@@ -42,31 +43,31 @@ class LmsBooks(models.Model):
 
     def borrow_action(self):
         for book in self:
-            if book.buyer_id and book.seller_id:
+            book.seller_id = self.env.user.id
+            if book.member_id and book.seller_id:
                 book.state = 'borrow'
                 present_date = datetime.now()
                 history = self.env['lms.history'].create(
                 {
                     'books_id': book.id,
-                    'member_id':book.buyer_id.id,
-                    'person_name': book.buyer_id.name,
+                    'member_id':book.member_id.id,
+                    'person_name': book.member_id.name,
                     'start_date': present_date,
                     'end_date': present_date + timedelta(days=book.days_borrow),
                     'state': "1"
                 })
             elif not book.buyer_id:
                 raise UserError(_("Please select a member to whom you want to lend this book."))
-            else:
-                book.seller_id = self.env.user.id
+                
 
     def bought_action(self):
         for book in self:
+            book.seller_id = self.env.user.id
             if book.buyer_id:
                 book.state = 'bought'
             elif not book.buyer_id:
-                raise UserError(_("Please select a member to whom you want to lend this book."))
-            else:
-                book.seller_id = self.env.user.id
+                raise UserError(_("Please select a Buyer to whom you want to buy this book."))
+                
 
     def available_action(self):
         present_date = datetime.now()

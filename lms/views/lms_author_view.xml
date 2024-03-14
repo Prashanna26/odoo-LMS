@@ -53,10 +53,15 @@
                                                         <b>
                                                             <field name="name" />
                                                         </b>
-                                                        <div> Author: <field name="author_ids" />
-                                                        </div>
-                                                        <div> Edition: <field name="edition" />
-                                                        </div>
+                                                    </div>
+                                                    <div> Published Year: 
+                                                        <field name="published_year" />
+                                                    </div>
+                                                    <div> Edition:
+                                                        <field name="edition" />
+                                                    </div>
+                                                    <div> Category: 
+                                                        <field name="category_ids" />
                                                     </div>
                                                 </div>
                                             </t>

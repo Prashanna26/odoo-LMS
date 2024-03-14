@@ -7,6 +7,7 @@ class  LmsAuthor(models.Model):
 
     name = fields.Char()
     sequence = fields.Integer('Sequence')
+    phone = fields.Char('Phone Number', size=16)
     email = fields.Char('Email', required=True)
     description = fields.Text()
     books_ids = fields.Many2many('lms.books', compute="_compute_book_ids")
