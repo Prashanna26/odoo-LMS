@@ -10,7 +10,7 @@ class LmsBooks(models.Model):
             selling_price = books.price
             invoice = self.env['account.move'].create(
                 {
-                'partner_id': books.buyer_id.id, 
+                'partner_id': books.buyer_id.id,
                 'move_type': 'out_invoice',
                 'invoice_line_ids':[
                     (0, 0, {
