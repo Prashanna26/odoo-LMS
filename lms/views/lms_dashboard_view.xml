@@ -11,9 +11,11 @@
                     <field name="is_books_card" />
                     <field name="is_sales_card" />
                     <field name="is_borrow_card" />
+                    <field name="is_amount_card" />
                     <field name="books_total" />
                     <field name="sold_total" />
                     <field name="borrow_total" />
+                    <field name="total_amount" />
                     <field name="color" />
                     <templates>
                         <t t-name="kanban-box">
@@ -21,7 +23,7 @@
                                 <div class="o_primary o_text_overflow fw-bold fs-4 mb-2">
                                     <field name="name" />
                                 </div>
-                                <div class="fw-bold display-1">
+                                <div class="fw-bold display-3">
                                     <t t-if="record.is_books_card.raw_value === true">
                                         <div>
                                             <field name="books_total" />
@@ -53,11 +55,7 @@
                                     <a class="o_kanban_manage_toggle_button o_dropdown_kanban" href="#" groups="base.group_user">
                                         <i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"/>
                                     </a>
-                                    <!-- <t t-if="record.is_amount_card.raw_value === true">
-                                        <div>
-                                            <field name="total_amount" />
-                                        </div>
-                                    </t> -->
+                                
                                 </div>
                             </div>
                         </t>

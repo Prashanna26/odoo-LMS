@@ -16,17 +16,9 @@ class LmsDashboard(models.Model):
     color = fields.Integer("Color")
 
 
-
-    # is_amount_card = fields.Boolean(default=False)
-    # total_amount = fields.Integer(compute="_compute_books_total")
-
-
     def _compute_books_total(self):
         for dash in self:
             dash.books_total = self.env["lms.books"].search_count([("id", "!=", None)])
             dash.sold_total = self.env["lms.books"].search_count([("state","=","bought")])
             dash.borrow_total = self.env["lms.books"].search_count([("state","=","borrow")])
-            # amount = self.env["account.move"].search([("amount_total_signed" , "=" , vals)])
-            # dash.total_amount = sum(amount)
-
-
+    

@@ -15,9 +15,4 @@
         <field name="is_borrow_card">True</field>
     </record>
 
-    <!-- <record id="lms_dashboard_d" model="lms.dashboard">
-        <field name="name">Total Amount</field>
-        <field name="is_amount_card">True</field>
-    </record> -->
-
 </odoo>
