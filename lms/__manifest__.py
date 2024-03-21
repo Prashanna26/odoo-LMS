@@ -20,6 +20,7 @@
         'views/lms_member_view.xml',
         'views/lms_history_view.xml',
         'views/lms_dashboard_view.xml',
+        'views/lms_offer_view.xml',
     ],
     'assets': {},
     'demo':[],

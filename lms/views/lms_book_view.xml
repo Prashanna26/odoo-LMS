@@ -39,12 +39,26 @@
                                     <div class="o_kanban_record_top mb-0">
                                         <div class="o_kanban_record_headings">
                                             <strong class="o_kanban_record_title">
-                                                <div class="d-flex justify-content-between">
+                                                <div class="d-flex justify-content-between fs-3">
                                                     <field name="name" />
                                                 </div>
                                             </strong>
                                         </div>
-                                        <field name="priority" widget="priority" />
+                                        <t t-if="record.offer_id.raw_value">
+                                            <div name="discount_percentage">
+                                                <span class="badge bg-danger rounded-pill">
+                                                    <span class="h6 p-1 text-white">
+                                                        <small>
+                                                            <field name="offer_id"/>
+                                                        </small>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </t>
+                                        <div class="m-2">
+
+                                            <field name="priority" widget="priority" />
+                                        </div>
                                     </div>
                                     <field name="author_ids" />
                                     <div>
@@ -165,6 +179,7 @@
                             <field name="year" />
                             <field name="category_ids" widget="many2many_tags"
                                 options="{'color_field': 'color'}" />
+                            <field name="offer_id" />
                             <field name="active" invisible="1" />
                         </group>
                         <notebook>

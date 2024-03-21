@@ -7,7 +7,7 @@ class LmsBooks(models.Model):
     _description = "Library Management System - Books"
     _order = "priority desc, name"
     
-    name = fields.Char(string=u'Title', required=True) 
+    name = fields.Char(string=u'Title', required=True)
     description = fields. Text()   
     image = fields.Binary(string='Image')
     author_ids = fields.Many2many('lms.author','books_ids',string='Author')
@@ -25,6 +25,7 @@ class LmsBooks(models.Model):
     buyer_id = fields.Many2one('res.partner', string="Buyer")
     member_id = fields.Many2one('lms.member', string="Member")
     seller_id = fields.Many2one('res.users', string="seller")
+    offer_id = fields.Many2one('lms.offer', string="Offers")
     days_borrow = fields.Integer(default=7, string="Days to Borrow")
     priority = fields.Selection([
         ('0', 'Normal'),

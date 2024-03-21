@@ -1,1 +1,1 @@
-from . import lms_books, lms_author, lms_category, lms_dashboard, lms_member, lms_history
+from . import lms_books, lms_author, lms_category, lms_dashboard, lms_member, lms_history, lms_offer

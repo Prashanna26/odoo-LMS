@@ -5,5 +5,6 @@ access_lms_category,lms.category,model_lms_category,base.group_user,1,1,1,1
 access_lms_member,lms.member,model_lms_member,base.group_user,1,1,1,1
 access_lms_history,lms.history,model_lms_history,base.group_user,1,1,1,1
 access_lms_dashboard,lms.dashboard,model_lms_dashboard,base.group_user,1,1,1,1
+access_lms_offer,lms.offer,model_lms_offer,base.group_user,1,1,1,1
 
 
